@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Interop;
 
 /*
  * Windows Wifi Manager
@@ -15,27 +16,6 @@ Right click
 	- exit
 Rick click SCAPPA 
 	- forget this network, forget all networks
-
-
-Code
-Uses NetSh/ Linq
-
-
-Questions
-NetSh/ Linq - what is this?
-
-
-Fixes
-Rick click - exit opens in wrong location
-1. Display current wifi password (where?) (and past passwords)
-    /// Control Panel\Network and Internet\Network Connections
-    /// Status - Wireless properties
-    /// Security - Network security key(show characters)
- * 
- * 
- * 
- * 
- * 
  */
 
 
@@ -61,6 +41,22 @@ namespace WifiUI
             trayIcon.TrayLeftMouseDown += trayIcon_TrayLeftMouseDown;
             WifiProfiles = new ObservableCollection<WifiProfile>();
             listView.ItemsSource = WifiProfiles;
+
+            LaunchSecondPage();
+        }
+
+        public static void LaunchSecondPage()
+        {
+            //Application.Run(new Form1());
+            SecondPage form = new SecondPage();
+            //WindowInteropHelper wih = new WindowInteropHelper(this);
+            //wih.Owner = form.Handle;
+            form.ShowDialog();
+        }
+
+        public static void ExitMainWindow()
+        {
+            //this.Close();
         }
 
         #endregion
