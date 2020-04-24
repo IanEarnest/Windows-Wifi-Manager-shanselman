@@ -15,6 +15,34 @@ namespace NetSh
     /// Your thoughts are appreciate. My goal is "it works" and "fewer lines of code." 
     /// Not to mention this was hacked together in 20 minutes. - Scott Hanselman
     /// </summary>
+    /// 
+
+    /*Functions
+     * GetWifiProfiles
+     *      Exports wifi profiles, creates list of profiles from .xml doc
+     *      Then deletes them
+     *      RETURNS list of wifi profiles
+     * DeleteWifiProfiles
+     *      INPUT profile name
+     *      ExecuteNetSh "wlan delete profile"
+     *      RETURNS string
+     * IsOpenAndAutoWifiProfile
+     *      INPUT profile
+     *      Check Auth=open and Mode=auto
+     *      RETURNS true/false
+     * ExportAllWifiProfiles
+     *      ExecuteNetSh "wlan show profiles"
+     *      searches profiles?
+     *      formats the strings, prints
+     * DeleteExportedWifiProfiles
+     *      Deletes XML file
+     * ExecuteNetSh
+     *      creates a process
+     *      no window, not shell, redirected
+     * 
+     * ns - can rename??
+     * 
+     */
     public class NetShWrapper
     {
         static XNamespace ns = "http://www.microsoft.com/networking/WLAN/profile/v1";
@@ -44,7 +72,6 @@ namespace NetSh
         {
             string result = ExecuteNetSh(String.Format("wlan delete profile name=\"{0}\"", profileName));
             return result;
-
         }
 
         public static bool IsOpenAndAutoWifiProfile(WifiProfile profile)

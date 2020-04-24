@@ -9,6 +9,7 @@
         </Style>
         <ContextMenu x:Shared="false" x:Key="tbMenu">
             <MenuItem Header="{StaticResource Exit}" Click="Exit_Click" />
+            <MenuItem Header="{StaticResource HelloWorld}" Click="HelloWorld" />
         </ContextMenu>
     </Window.Resources>
     <tb:TaskbarIcon x:Name="trayIcon" IconSource="logo.ico" ToolTipText="{StaticResource ProgramTitle}" ContextMenu="{StaticResource tbMenu}" MenuActivation="RightClick">

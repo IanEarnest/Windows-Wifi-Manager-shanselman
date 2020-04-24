@@ -4,6 +4,17 @@
     using System;
     using System.Linq;
 
+    /*Functions
+     * Main
+     *      Fixing itself??
+     * Delete
+     *      Deletes profile/ writes in cmd?
+     * List
+     *      Gets profiles, bad wifi? (open and auto connects), 
+     *      Console write output of profile
+     *      Outputs if bad wifi or no wifi found
+     */
+
     class Program
     {
         static void Main(string[] args)
