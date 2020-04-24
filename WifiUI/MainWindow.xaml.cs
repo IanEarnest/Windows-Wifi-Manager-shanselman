@@ -104,7 +104,7 @@ namespace WifiUI
         private void HelloWorld(object sender, RoutedEventArgs e)
         {
             // Hello World
-            
+            MessageBox.Show("Hello World");
         }
 
         void trayIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
