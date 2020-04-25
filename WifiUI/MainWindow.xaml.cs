@@ -18,6 +18,94 @@ Rick click SCAPPA
 	- forget this network, forget all networks
  */
 
+/*
+ * 
+ * https://support.microsoft.com/en-us/help/305603/how-to-use-visual-c-to-close-another-application
+ * 
+ private Process[] processes;
+private string procName = "Notepad";
+private string specialFolder = System.Environment.GetFolderPath(Environment.SpecialFolder.System);
+    
+
+
+    [STAThread]
+static void Main() 
+{
+Application.Run(new Form1());
+}
+  
+private void buildList()
+{
+ListViewItem itemAdd ; 
+ListView1.Items.Clear();
+processes = Process.GetProcessesByName(procName);
+foreach (Process proc in processes)
+{
+itemAdd = ListView1.Items.Add(proc.MainWindowTitle);
+itemAdd.SubItems.Add(proc.Id.ToString());
+}
+}
+
+private void btnLaunch1_Click(object sender, System.EventArgs e)
+{
+ProcessStartInfo p = new ProcessStartInfo();
+p.FileName = specialFolder + @"\eula.txt";
+p.WindowStyle = ProcessWindowStyle.Minimized ;
+Process proc =Process.Start(p);
+proc.WaitForInputIdle();
+buildList();
+}
+private void Form1_Load(object sender, System.EventArgs e)
+{
+      
+}
+
+private void btnClose1_Click(object sender, System.EventArgs e)
+{
+try
+{         
+int procID=System.Convert.ToInt32(ListView1.SelectedItems[0].SubItems[1].Text);
+Process tempProc=Process.GetProcessById(procID);
+tempProc.CloseMainWindow();
+tempProc.WaitForExit();
+buildList();
+}
+catch
+{
+MessageBox.Show("Please select a process in the ListView before clicking this button." +
+" Or the Process may have been closed by somebody." );
+buildList();
+}
+}
+
+private void btnCloseAll_Click(object sender, System.EventArgs e)
+{
+try
+{
+foreach (Process proc in processes)
+{
+proc.CloseMainWindow();
+proc.WaitForExit();
+}
+buildList();
+}
+catch (System.NullReferenceException)
+{
+MessageBox.Show("No instances of Notepad running.");
+}
+}
+
+private void closing(object sender, System.ComponentModel.CancelEventArgs e)
+{
+//Make sure that you do not leave any instances running.
+if (processes != null && processes.Length!=0)
+this.btnCloseAll_Click(this,e);
+}
+}
+}
+ */
+
+
 
 namespace WifiUI
 {
