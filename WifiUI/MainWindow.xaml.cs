@@ -103,6 +103,19 @@ this.btnCloseAll_Click(this,e);
 }
 }
 }
+
+
+    Process[] myProcesses;
+            myProcesses = Process.GetProcessesByName("Display");
+            foreach (Process myProcess in myProcesses)
+            {
+                // gracefully request close of main window
+                if (myProcess.CloseMainWindow()) // NOTE: can only use Kill for Console app
+                    myProcess.Close();
+                // then if it did not and you still want to force it...
+                if (!myProcess.HasExited)
+                    myProcess.Kill();
+            }
  */
 
 
@@ -183,7 +196,8 @@ namespace WifiUI
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            SecondPage.QuitWifiUI();
         }
         private void HelloWorld(object sender, RoutedEventArgs e)
         {

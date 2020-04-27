@@ -5,11 +5,15 @@
         Title="{StaticResource ForgetTitle}" Height="Auto" Width="Auto" WindowStyle="None" ShowInTaskbar="False" Visibility="Hidden" MinWidth="300" MinHeight="310" MaxWidth="300" MaxHeight="310">
     <Window.Resources>
         <Style x:Key="hideColumnHeader" TargetType="{x:Type GridViewColumnHeader}">
-            <Setter Property="Visibility" Value="Collapsed" />
+            <Setter Property="Visibility" Value="Visible" />
         </Style>
-        <ContextMenu x:Shared="false" x:Key="tbMenu">
-            <MenuItem Header="{StaticResource Exit}" Click="Exit_Click" />
-            <MenuItem Header="{StaticResource HelloWorld}" Click="HelloWorld" />
+        <ContextMenu x:Shared="false" x:Key="tbMenu"  Margin="0,0,200,0">
+            <!-- ContextMenuService.Placement="Bottom" Height="200" Width="75"-->
+            <!--VerticalAlignment
+            https://www.wpf-tutorial.com/common-interface-controls/contextmenu/
+            https://www.c-sharpcorner.com/article/contextmenu-in-wpf/-->
+            <MenuItem Header="{StaticResource Exit}" Click="Exit_Click" Command=""/>
+            <MenuItem Header="{StaticResource HelloWorld}" Click="HelloWorld" Command=""/>
         </ContextMenu>
     </Window.Resources>
     <tb:TaskbarIcon x:Name="trayIcon" IconSource="logo.ico" ToolTipText="{StaticResource ProgramTitle}" ContextMenu="{StaticResource tbMenu}" MenuActivation="RightClick">
